@@ -10,7 +10,7 @@
     ],
     "skipLibCheck": true,
     "declaration": true,
-    "declarationMap": true,
+    "declarationMap": false,
     "emitDeclarationOnly": true,
     "declarationDir": "./dist",
     "outDir": "./dist",
@@ -27,9 +27,7 @@
     "removeComments": false
   },
   "include": [
-    "src",
-    "tests",
-    "vite.config.ts"
+    "src"
   ],
   "exclude": [
     "node_modules",

@@ -1,0 +1,14 @@
+# First ignore everything
+*
+
+# Then whitelist specific files/directories
+!dist/
+!README.md
+!package.json
+!LICENSE
+
+# Even if a directory is whitelisted, ignore some files within it
+dist/**/*.test.*
+dist/**/*.spec.*
+dist/**/*.map
+dist/**/*.svg

@@ -31,5 +31,12 @@ export default defineConfig({
         });
       },
     },
+    {
+      name: 'cleanup-assets',
+      closeBundle() {
+        // Remove any non-essential files from dist
+        execSync('rm -f ./dist/*.svg ./dist/*.map', { stdio: 'inherit' });
+      },
+    },
   ],
 });
