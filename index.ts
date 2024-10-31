@@ -1,3 +1,3 @@
-import { add } from './src/lib/index';
+import add from './src/lib/index';
 
 export { add };

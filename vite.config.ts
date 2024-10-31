@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite';
-import dts from 'rollup-plugin-dts';
 import { resolve } from 'path';
+import { execSync } from 'child_process';
 
 export default defineConfig({
   build: {
@@ -15,12 +15,21 @@ export default defineConfig({
     reportCompressedSize: true,
     chunkSizeWarningLimit: 500,
     rollupOptions: {
-      plugins: [dts()],
       output: {
-        // Ensure we generate the .d.ts file
         entryFileNames: '[name].[format].js',
         chunkFileNames: '[name]-[hash].[format].js',
       },
     },
   },
+  // Use a hook to run TypeScript after the build
+  plugins: [
+    {
+      name: 'generate-types',
+      closeBundle() {
+        execSync('tsc --emitDeclarationOnly --declarationDir ./dist', {
+          stdio: 'inherit',
+        });
+      },
+    },
+  ],
 });
